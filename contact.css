@@ -1,0 +1,395 @@
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #111111;
+    color: white;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+
+.terminal-header {
+    background-color: #101010;
+    border: 1px solid #438D0B;
+    margin: 20px auto;
+    width: 94%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.terminal-top {
+    background-color: #252525;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #444444;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 7px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: #ff5f56;
+}
+
+.yellow {
+    background-color: #ffbd2e;
+}
+
+.green {
+    background-color: #27c93f;
+}
+
+.terminal-label {
+    color: #aaaaaa;
+    font-size: 13px;
+}
+
+.terminal-content {
+    padding: 30px 25px;
+}
+
+.terminal-content h1 {
+    color: #65FF33;
+    font-size: 42px;
+    letter-spacing: 5px;
+    margin-bottom: 12px;
+}
+
+.terminal-content p {
+    color: #eeeeee;
+    font-size: 15px;
+}
+
+.prompt {
+    color: #65FF33;
+    font-weight: bold;
+}
+
+.terminal-subtitle {
+    color: #888888 !important;
+    font-size: 12px !important;
+    margin-top: 8px;
+}
+
+
+.terminal-content p:first-of-type::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: #65FF33;
+    margin-left: 5px;
+    vertical-align: middle;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+
+
+.terminal-header nav {
+    border-top: 1px solid #444444;
+    padding: 15px 20px;
+}
+
+.terminal-header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.terminal-header nav a {
+    color: #65FF33;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.terminal-header nav a:hover,
+.terminal-header nav a[aria-current="page"] {
+    color: white;
+}
+
+.terminal-header nav a:focus-visible {
+    outline: 2px solid #65FF33;
+    outline-offset: 4px;
+}
+
+
+/* =================================
+   MAIN CONTENT
+================================= */
+
+main {
+    max-width: 850px;
+    width: 90%;
+    margin: 50px auto;
+}
+
+
+/* Introduction */
+
+.intro {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.intro h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.intro h2 span {
+    color: #65FF33;
+}
+
+.intro p {
+    color: #cccccc;
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+
+/* =================================
+   CONTACT FORM
+================================= */
+
+.contact-container {
+    background-color: #181818;
+    border: 1px solid #555555;
+    border-radius: 15px;
+    padding: 35px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.form-heading {
+    margin-bottom: 25px;
+}
+
+.form-heading h2 {
+    color: #65FF33;
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.form-heading p {
+    color: #bbbbbb;
+    font-size: 14px;
+}
+
+
+/* Form Fields */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #eeeeee;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #666666;
+    border-radius: 7px;
+    background-color: #222222;
+    color: white;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999999;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 2px solid #65FF33;
+    outline-offset: 2px;
+    border-color: #65FF33;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+
+/* =================================
+   SUBMIT BUTTON
+================================= */
+
+.submit-button {
+    background-color: #438D0B;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #326B08;
+}
+
+.submit-button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+
+/* Confirmation Message */
+
+#confirmation-message {
+    background-color: #214D19;
+    color: #B9F5A5;
+    border: 1px solid #65FF33;
+    padding: 15px;
+    border-radius: 7px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#confirmation-message[hidden] {
+    display: none;
+}
+
+
+/* =================================
+   SECURITY NOTE
+================================= */
+
+.security-note {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.security-note h2 {
+    color: #65FF33;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.security-note p {
+    color: #bbbbbb;
+    font-size: 13px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+    background-color: #181818;
+    border-top: 1px solid #438D0B;
+    color: #65FF33;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 12px;
+}
+
+
+/* =================================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+
+    .terminal-content h1 {
+        font-size: 30px;
+    }
+
+    .terminal-header nav ul {
+        gap: 15px;
+    }
+
+    .terminal-header nav a {
+        font-size: 12px;
+    }
+
+    .intro h2 {
+        font-size: 25px;
+    }
+
+    .contact-container {
+        padding: 22px;
+    }
+
+    main {
+        margin-top: 30px;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .terminal-header {
+        width: 96%;
+    }
+
+    .terminal-content {
+        padding: 22px 15px;
+    }
+
+    .terminal-content h1 {
+        font-size: 25px;
+    }
+
+    .terminal-header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-container {
+        padding: 18px;
+    }
+
+}
