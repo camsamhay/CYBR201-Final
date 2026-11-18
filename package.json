@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@webtui/css": "^0.1.10",
-    "@webtui/theme-gruvbox": "^0.0.3"
+    "@webtui/theme-gruvbox": "^0.0.3",
+    "asciinema-player": "^3.18.1"
   }
 }

@@ -1,7 +1,7 @@
 @layer base, utils, components;
 
 /* base */
-@import "@webtui/css/base.css";
+@import "webtui/base.css";
 
 /* components */
 @import "webtui/components/typography.css";
@@ -42,7 +42,36 @@
     --foreground2: var(--gb-dark-fg3);
 }
 
-:root {
-    color-scheme: dark;
-    background-color: var(--background1);
+body {
+    word-break: normal;
+}
+
+h1, h2, h3 {
+    padding: 1ch;
+}
+
+.intro {
+    padding: 1ch;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    padding: 0lh 1ch;
+    padding-top: 1lh;
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+
+[box-] {
+    margin: 1lh;
+}
+span {
+    color: var(--gb-green);
+    background-color: var(--background0);
+    padding: 0 1ch;
 }
