@@ -7,6 +7,28 @@
 </head>
 <body>
     <h1># Secure Web Development</h1>
-    <p>more content here</p>
+    <h2>Top 4 Rules for Secure Web Development</h2>
+    <p>Building a secure website starts with writing secure code. If you want to protect your users and your data, follow these essential practices:</p>
+
+    <div class="security-tip">
+      <h3>1. Never Trust User Input (Sanitize Everything)</h3>
+      <p>Hackers often use forms and search bars to inject malicious code into a website. Always validate and sanitize user input before your server processes it. This is your primary defense against Cross-Site Scripting (XSS) and SQL Injection attacks.</p>
+    </div>
+
+    <div class="security-tip">
+      <h3>2. Always Encrypt with HTTPS</h3>
+      <p>Never send data over plain HTTP. Using HTTPS encrypts the communication between the user's browser and your web server, ensuring that sensitive information—like passwords and credit card numbers—cannot be intercepted by attackers.</p>
+    </div>
+
+    <div class="security-tip">
+      <h3>3. Keep Your Libraries Updated</h3>
+      <p>Modern websites rely heavily on third-party plugins, frameworks, and CSS libraries. If one of these external tools has a vulnerability, your whole site is at risk. Regularly update all dependencies to patch known security flaws.</p>
+    </div>
+
+    <div class="security-tip">
+      <h3>4. Control Your Resources with a CSP</h3>
+      <p>A Content Security Policy (CSP) restricts which external resources (like scripts, videos, and images) are allowed to load on your webpage. This stops unauthorized, malicious scripts from executing in the background of your site.</p>
+    </div>
+
 </body>
 </html>
