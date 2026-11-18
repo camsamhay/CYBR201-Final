@@ -1,12 +1,172 @@
 <!doctype html>
-<html lang="en" data-webtui-theme="gruvbox-dark-medium">
+<html lang="en" data-webtui-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>To Phish or Not to Phish</title>
+    <link rel="stylesheet" href="css/webtui/full.css">
+    <style>
+        body {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            word-break: normal;
+        }
+
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .email {
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .fake-link {
+            text-decoration: underline;
+        }
+
+        .answer {
+            display: none;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1># Phishing</h1>
-    <p>more content here</p>
+
+    <h1>To Phish or Not to Phish</h1>
+    <p>Learn how to spot a phishing email, then take the quiz at the bottom!</p>
+
+    <h2>What is phishing?</h2>
+    <p>
+        Phishing is when a hacker sends you a message pretending to be someone you trust, like your bank,
+        your school, or a delivery company. They want you to click a bad link, open a bad attachment,
+        or give them your password or personal information.
+    </p>
+    <p>
+        It is called "phishing" because the hacker sends out lots of bait and waits for someone to bite.
+    </p>
+
+    <h2>Types of phishing</h2>
+    <ul>
+        <li><b>Email phishing</b> - fake emails sent to a lot of people at once</li>
+        <li><b>Spear phishing</b> - a fake email made just for you, using your name or school</li>
+        <li><b>Smishing</b> - phishing through text messages</li>
+        <li><b>Vishing</b> - phishing through phone calls</li>
+    </ul>
+
+    <h2>Red flags to look for</h2>
+    <ul>
+        <li><b>Weird sender address</b> - the name says "PayPal" but the email is from something like paypa1-secure.co</li>
+        <li><b>Urgency</b> - "Your account will be closed in 24 hours!"</li>
+        <li><b>Suspicious links</b> - hover over a link to see where it really goes before you click</li>
+        <li><b>Asking for private info</b> - real companies will never ask for your password or PIN in an email</li>
+        <li><b>Generic greeting</b> - "Dear Customer" instead of your name</li>
+        <li><b>Attachments you didn't expect</b> - especially .zip or .exe files</li>
+    </ul>
+
+    <h2>What should you do?</h2>
+    <ul>
+        <li>Don't click any links or open attachments</li>
+        <li>Go to the real website yourself instead</li>
+        <li>Report the email or tell your IT department</li>
+        <li>If you already typed in your password, change it right away</li>
+    </ul>
+
+    <div is-="separator"></div>
+
+    <h2>Quiz: Phish or Legit?</h2>
+    <p>Read each email and decide if it is phishing or legit.</p>
+
+    <h3>Email 1</h3>
+    <div class="email">
+        <p><b>From:</b> Northbank Security &lt;alerts@northbank-verify-login.net&gt;</p>
+        <p><b>Subject:</b> URGENT: Your account has been suspended</p>
+        <p>Dear Customer,</p>
+        <p>We noticed unusual activity on your account. You must verify your identity within 24 hours or your account will be closed.</p>
+        <p class="fake-link">http://northbank-verify-login.net/secure/confirm</p>
+        <p>Please have your card number and PIN ready.</p>
+    </div>
+    <button onclick="checkAnswer(1, 'phishing')">Phishing</button>
+    <button onclick="checkAnswer(1, 'legit')">Legit</button>
+    <p class="answer" id="answer1"></p>
+
+    <h3>Email 2</h3>
+    <div class="email">
+        <p><b>From:</b> Riverside College IT &lt;helpdesk@riverside.edu&gt;</p>
+        <p><b>Subject:</b> Scheduled maintenance this Saturday</p>
+        <p>Hi Jordan,</p>
+        <p>The student portal will be down this Saturday from 2:00 to 6:00 AM for maintenance. You don't need to do anything.</p>
+        <p>If you have questions, stop by the IT help desk in the library.</p>
+        <p>Thanks,<br>Riverside College IT</p>
+    </div>
+    <button onclick="checkAnswer(2, 'phishing')">Phishing</button>
+    <button onclick="checkAnswer(2, 'legit')">Legit</button>
+    <p class="answer" id="answer2"></p>
+
+    <h3>Email 3</h3>
+    <div class="email">
+        <p><b>From:</b> ParcelGo Delivery &lt;no-reply@parcelgo-tracking.info&gt;</p>
+        <p><b>Subject:</b> Delivery failed - action required</p>
+        <p>Hello,</p>
+        <p>We tried to deliver your package but no one was home. You need to pay a $1.99 redelivery fee.</p>
+        <p>Open the attached file to schedule a new delivery: <span class="fake-link">Redelivery_Form.zip</span></p>
+    </div>
+    <button onclick="checkAnswer(3, 'phishing')">Phishing</button>
+    <button onclick="checkAnswer(3, 'legit')">Legit</button>
+    <p class="answer" id="answer3"></p>
+
+    <h2 id="score"></h2>
+
+    <script>
+        var correctAnswers = ["", "phishing", "legit", "phishing"];
+
+        var explanations = [
+            "",
+            "The sender address is not the real bank, it says 'Dear Customer', it rushes you, and it asks for your PIN.",
+            "It comes from the school's real email, uses your name, has no links, and doesn't ask you to do anything.",
+            "The email address looks fake, it asks you to pay money, and it has a .zip attachment which could be a virus."
+        ];
+
+        var score = 0;
+        var answered = 0;
+
+        function checkAnswer(questionNumber, userAnswer) {
+            var answerText = document.getElementById("answer" + questionNumber);
+
+            if (answerText.style.display == "block") {
+                return;
+            }
+
+            if (userAnswer == correctAnswers[questionNumber]) {
+                answerText.innerHTML = "Correct! " + explanations[questionNumber];
+                score = score + 1;
+            } else {
+                 answerText.innerHTML = "Wrong! " + explanations[questionNumber];
+            }
+
+            answerText.style.display = "block";
+            answered = answered + 1;
+
+            if (answered == 3) {
+                document.getElementById("score").innerHTML = "Your score: " + score + " out of 3";
+            }
+        }
+    </script>
+
 </body>
 </html>
